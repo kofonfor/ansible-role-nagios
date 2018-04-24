@@ -1,2 +1,8 @@
 - name: install nagios3
   apt: name=nagios3
+
+- name: install python-passlib
+  apt: name=python-passlib
+
+- name: add a nagios user
+  htpasswd: path=/etc/nagios3/htpasswd.users name={{ nagios_user }} password="{{ nagios_password }}" owner=root group=www-data mode=0640
